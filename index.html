@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TODOLIST - Beranda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0; /* Menghapus padding default */
+            background-image: url('https://www.gamelab.id/uploads/news/berita-617-design-latar-belakang-websitemu-agar-lebih-menarik-20210416-064246.jpg');
+            background-size: cover; /* Mengatur gambar latar memenuhi layar */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Mengatur tinggi penuh tampilan untuk centering */
+            overflow: hidden; /* Menghindari scroll */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px; /* Mengurangi padding */
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            color: rgb(5, 5, 5);
+            transition: top 0.3s ease;
+            font-size: 30px; /* Ukuran font untuk desktop */
+            
+        }
+
+        nav {
+            text-align: right;
+        }
+
+        nav a {
+            margin: 1 8px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 187, 255, 0.377);
+            color: white;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden; /* Menghindari scroll */
+        }
+
+        .welcome-text {
+            font-size: 32px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 187, 255, 0.377);
+            margin: 0;
+        }
+
+        .welcome-app {
+            font-size: 50px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 187, 255, 0.377);
+            margin-top: 2px; /* Menaikkan teks E-TODOLIST lebih dekat ke SELAMAT DATANG DI APLIKASI */
+        }
+
+        /* Media Queries untuk layar kecil */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column; /* Mengubah header menjadi kolom di perangkat kecil */
+                align-items: center; /* Meratakan elemen di tengah */
+            }
+
+            h1 {
+                font-size: 18px; /* Ukuran font lebih kecil untuk judul di layar kecil */
+            }
+
+            nav {
+                text-align: center; /* Meratakan tautan di tengah */
+                margin-top: 10px; /* Jarak atas untuk nav */
+            }
+
+            nav a {
+                margin: 5px 0; /* Jarak antar tautan */
+                font-size: 12px; /* Ukuran font lebih kecil untuk tautan di layar kecil */
+            }
+
+            main {
+                padding: 10px; /* Padding lebih sedikit untuk tampilan mobile */
+                flex-direction: column; /* Menempatkan konten dalam kolom */
+                justify-content: center; /* Mengatur konten di tengah */
+                height: 100%; /* Memastikan tinggi konten sesuai layar */
+            }
+
+            .welcome-text {
+                font-size: 24px; /* Ukuran font lebih kecil untuk teks sambutan */
+                margin-top: -20px; /* Menaikkan teks ke atas */
+            }
+
+            .welcome-app {
+                font-size: 30px; /* Ukuran font lebih kecil untuk nama aplikasi */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>E-TODOLIST</h1>
+        <nav>
+            <a href="registrasi.html">DAFTAR</a>
+            <a href="login.html">LOGIN</a>
+            <a href="developer.html">DEVELOPER</a>
+            <a href="help.html">HELP</a>
+        </nav>
+    </header>
+
+    <main>
+        <div>
+            <p class="welcome-text">SELAMAT DATANG DI APLIKASI</p>
+            <p class="welcome-app">E-TODOLIST</p>
+        </div>
+    </main>
+</body>
+</html>

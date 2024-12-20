@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TODOLIST - Form</title>
+    <style>
+        /* Background styling */
+        body {
+            margin: 0;
+            background-image: url('https://png.pngtree.com/background/20210714/original/pngtree-hand-drawn-learning-education-tools-blackboard-background-picture-image_1219834.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh; /* Full height */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(255, 255, 255, 0.667); /* Background transparan */
+            padding: 7px;
+            color: rgb(0, 0, 0);
+            height: 100vh; /* Ganti dari 100vh ke auto */
+            position: fixed;
+            width: 220px;
+            top: 0; /* Mengatur header agar berada di bagian atas */
+            left: 0;
+        }
+
+        h1 {
+            margin: 0;
+            color: rgb(0, 0, 0);
+            text-align: left;
+            padding-left: 10px; /* Geser teks E-TODOLIST ke kanan */
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            display: block;
+            margin: 10px 0;
+            padding: 7px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.731);
+            border-radius: 6px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(8, 148, 199, 0.527);
+        }
+
+        nav a.active {
+            background-color: rgba(0, 73, 224, 0.8);
+            color: white;
+        }
+
+        /* Form styling */
+        main {
+            margin-left: 240px; /* Geser ke kanan untuk memberi ruang pada header */
+            padding: 20px;
+            color: rgb(241, 0, 0);
+            margin-top: 20px; /* Tambah jarak dari atas */
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            color: black;
+            max-width: 100%; /* Memperbesar lebar maksimal formulir */
+            margin: 0 auto; /* Centering */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan pada formulir */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, textarea {
+            width: calc(100% - 22px); /* Mengurangi lebar input dan textarea untuk padding */
+            padding: 10px;
+            margin-bottom: 5px; /* Mengurangi margin bottom untuk pesan validasi */
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+        }
+
+        .error-message {
+            color: red; /* Warna pesan kesalahan */
+            font-size: 12px; /* Ukuran font pesan kesalahan */
+            margin-bottom: 10px; /* Jarak bawah */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            header {
+                width: 100%; /* Header menjadi lebar penuh di perangkat kecil */
+                height: auto; /* Tinggi otomatis */
+            }
+            main {
+                margin-left: 0; /* Menghilangkan margin kiri untuk perangkat kecil */
+                padding: 10px; /* Mengurangi padding */
+            }
+            nav {
+                display: flex; /* Mengubah nav menjadi flex untuk responsif */
+                flex-direction: column; /* Mengatur arah menjadi kolom */
+                align-items: center; /* Mengatur align item ke tengah */
+            }
+            nav a {
+                width: 100%; /* Mengatur lebar tautan menjadi penuh */
+                text-align: center; /* Menyelaraskan teks ke tengah */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>E-TODOLIST</h1>
+        <nav>
+            <a href="dashboard_admin.html">BERANDA</a>
+            <a href="form.html">FORM</a>
+        </nav>
+    </header>
+
+    <main>
+        <form id="taskForm">
+            <label for="taskName">Nama Tugas:</label>
+            <input type="text" id="taskName" name="taskName">
+            <div class="error-message" id="taskNameError"></div>
+
+            <label for="taskDescription">Deskripsi Tugas:</label>
+            <textarea id="taskDescription" name="taskDescription" rows="4"></textarea>
+            <div class="error-message" id="taskDescriptionError"></div>
+
+            <label for="givenDate">Tanggal Diberikan:</label>
+            <input type="date" id="givenDate" name="givenDate">
+            <div class="error-message" id="givenDateError"></div>
+
+            <label for="dueDate">Tanggal Pengumpulan:</label>
+            <input type="date" id="dueDate" name="dueDate">
+            <div class="error-message" id="dueDateError"></div>
+
+            <label for="taskImage">Gambar Tugas (opsional):</label>
+            <input type="file" id="taskImage" name="taskImage" accept="image/*">
+
+            <button type="submit">Tambahkan Tugas</button>
+        </form>
+    </main>
+
+    <script>
+        // Ambil formulir
+        const form = document.getElementById('taskForm');
+
+        // Fungsi untuk menyimpan tugas ke localStorage
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah reload halaman
+
+            // Ambil nilai dari input
+            const taskName = document.getElementById('taskName').value;
+            const taskDescription = document.getElementById('taskDescription').value;
+            const givenDate = document.getElementById('givenDate').value;
+            const dueDate = document.getElementById('dueDate').value;
+            const taskImage = document.getElementById('taskImage').files[0];
+
+            // Reset pesan error
+            document.getElementById('taskNameError').textContent = '';
+            document.getElementById('taskDescriptionError').textContent = '';
+            document.getElementById('givenDateError').textContent = '';
+            document.getElementById('dueDateError').textContent = '';
+
+            // Validasi
+            let isValid = true;
+            if (!taskName) {
+                document.getElementById('taskNameError').textContent = 'Uyy, diisi lah!';
+                isValid = false;
+            }
+            if (!taskDescription) {
+                document.getElementById('taskDescriptionError').textContent = 'Uyy, diisi lah!';
+                isValid = false;
+            }
+            if (!givenDate) {
+                document.getElementById('givenDateError').textContent = 'Uyy, diisi lah!';
+                isValid = false;
+            }
+            if (!dueDate) {
+                document.getElementById('dueDateError').textContent = 'Uyy, diisi lah!';
+                isValid = false;
+            }
+
+            // Jika semua validasi lulus
+            if (isValid) {
+                // Konversi gambar ke Base64 jika ada
+                let reader = new FileReader();
+                reader.onloadend = function() {
+                    let imageBase64 = reader.result;
+
+                    // Buat objek tugas
+                    let task = {
+                        name: taskName,
+                        description: taskDescription,
+                        givenDate: givenDate,
+                        dueDate: dueDate,
+                        image: imageBase64 || null
+                    };
+
+                    // Simpan tugas ke localStorage
+                    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                    tasks.push(task);
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                    // Reset formulir
+                    form.reset();
+                    alert('Tugas berhasil ditambahkan!');
+                };
+                if (taskImage) {
+                    reader.readAsDataURL(taskImage);
+                } else {
+                    reader.onloadend(); // Jika tidak ada gambar
+                }
+            }
+        });
+    </script>
+</body>
+</html>

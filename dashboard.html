@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pengguna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('https://www.gamelab.id/uploads/news/berita-617-design-latar-belakang-websitemu-agar-lebih-menarik-20210416-064246.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #007BFF;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        nav {
+            margin: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1; /* Membuat main mengambil ruang yang tersisa */
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.8); /* Menambahkan latar belakang semi-transparan */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center; /* Rata tengah untuk judul */
+            margin-bottom: 20px; /* Menambahkan jarak di bawah judul */
+            font-size: 28px; /* Ukuran font untuk judul */
+            font-weight: bold; /* Mengubah font menjadi tebal */
+        }
+
+        main p {
+            text-align: center; /* Rata tengah untuk paragraf */
+            font-weight: normal; /* Mengubah font menjadi normal untuk paragraf */
+            margin: 10px 0; /* Menambahkan jarak antar paragraf */
+            font-size: 18px; /* Ukuran font untuk paragraf */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            margin-top: auto; /* Memastikan footer tetap di bawah */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Dashboard Anda</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">BERANDA</a></li>
+                <li><a href="list.html">LIHAT TUGAS</a></li>
+                <li><a href="login.html">LOGOUT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Selamat Datang Di Dashboard Pengguna E-TODOLIST</h2>
+        <p>“Kesuksesan bukanlah kunci kebahagiaan. Kebahagiaan adalah kunci kesuksesan. Jika Anda mencintai apa yang Anda kerjakan, Anda akan sukses.”</p>
+        <p><em>— Albert Schweitzer</em></p>
+    </main>
+    <footer>
+        <p>&copy; 2024 E-Todolist. Semua hak dilindungi.</p>
+    </footer>
+</body>
+</html>

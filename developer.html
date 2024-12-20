@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TODOLIST - Developer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            color: rgb(255, 252, 252);
+            font-size: 30px;
+        }
+
+        nav {
+            text-align: right;
+        }
+
+        nav a {
+            margin: 1 8px;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 187, 255, 0.377);
+            color: white;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .developer-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .developer-section h2 {
+            font-size: 40px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgb(0, 0, 0);
+        }
+
+        .developer-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .developer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+        }
+
+        .developer-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(0, 187, 255, 0.377);
+            transition: transform 0.3s ease; /* Menambahkan transisi */
+        }
+
+        .developer-item img:hover {
+            transform: scale(1.1); /* Efek timbul saat kursor berada di gambar */
+        }
+
+        .developer-item h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: rgb(255, 255, 255); /* Warna teks */
+            text-shadow: 0px 3px 0px rgb(0, 0, 0); /* Outline hitam */
+        }
+
+        /* Media Queries untuk layar kecil */
+        @media (max-width: 600px) {
+            .developer-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .developer-item {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>E-TODOLIST</h1>
+        <nav>
+            <a href="index.html">BERANDA</a>
+            <a href="developer.html">DEVELOPER</a>
+            <a href="help.html">HELP</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="developer-section">
+            <h2>DEVELOPERS E-TODOLIST</h2>
+            <div class="developer-list">
+                <div class="developer-item">
+                    <img src="azhiem.jpeg" alt="Developer 1">
+                    <h3>Muhammad Azhiem Fadillah</h3>
+                </div>
+                <div class="developer-item">
+                    <img src="miya.jpeg" alt="Developer 2">
+                    <h3>Nurmiyaty</h3>
+                </div>
+                <div class="developer-item">
+                    <img src="aisyah.jpeg" alt="Developer 3">
+                    <h3>Aisyah Safitri</h3>
+                </div>
+                <div class="developer-item">
+                    <img src="mahdalina.jpeg" alt="Developer 4">
+                    <h3>Mahdalina</h3>
+                </div>
+                <div class="developer-item">
+                    <img src="Fahrul.jpeg" alt="Developer 5">
+                    <h3>Muhammad Fahrul Bahri</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

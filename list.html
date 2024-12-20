@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-TODOLIST - Daftar Tugas</title>
+    <style>
+        /* Background styling */
+        body {
+            margin: 0;
+            background-image: url('https://png.pngtree.com/background/20210714/original/pngtree-hand-drawn-learning-education-tools-blackboard-background-picture-image_1219834.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh; /* Full height */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(255, 255, 255, 0.667); /* Background transparan */
+            padding: 10px; /* Padding yang lebih nyaman */
+            color: rgb(6, 6, 6);
+            height: 100vh;
+            position: fixed;
+            width: 220px;
+        }
+
+        h1 {
+            margin: 0;
+            color: rgb(0, 0, 0);
+            text-align: left;
+            padding-left: 10px; /* Geser teks E-TODOLIST ke kanan */
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: rgb(0, 0, 0, 0.731);
+            border-radius: 6px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(8, 148, 199, 0.527);
+        }
+
+        nav a.active {
+            background-color: rgba(0, 73, 224, 0.8);
+            color: white;
+        }
+
+        /* Main content styling */
+        main {
+            margin-left: 240px; /* Geser ke kanan agar tidak menabrak sidebar */
+            padding: 20px;
+            color: white;
+        }
+
+        h2 {
+            text-align: center; /* Align heading to center */
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+
+        /* Styling untuk input pencarian */
+        #searchInput {
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            width: calc(100% - 22px); /* Mengurangi lebar input agar sesuai dengan padding */
+            margin-top: 20px;
+        }
+
+        .task {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            color: black;
+            position: relative; /* Tambahkan untuk posisi absolut tombol hapus */
+            border-left: 5px solid #007BFF; /* Garis samping */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Bayangan */
+            word-wrap: break-word;
+            transition: transform 0.3s; /* Tambahkan transisi */
+        }
+
+        .task:hover {
+            transform: scale(1.03); /* Efek memperbesar sedikit saat hover */
+        }
+
+        .task img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .task h3 {
+            margin-top: 0;
+        }
+
+        .task p {
+            margin: 5px 0;
+        }
+
+        .task .date {
+            display: flex;
+            flex-direction: column; /* Mengubah arah kolom */
+            margin-top: 10px;
+        }
+
+        .task .date p {
+            margin: 2px 0; /* Mengurangi margin antar tanggal */
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: darkred; /* Warna saat hover */
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none; /* Modal tersembunyi secara default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center; /* Pusatkan konten modal */
+        }
+
+        .modal-content {
+            margin-top: 100px; /* Memberikan jarak dari atas modal */
+        }
+
+        .modal-content img {
+            max-width: 70%; /* Ukuran gambar di modal */
+            height: auto; /* Tinggi otomatis */
+            border-radius: 10px;
+            margin-top: 10px; /* Geser gambar sedikit ke atas */
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ff0000;
+        }
+
+        /* Media Queries untuk Responsif */
+        @media (max-width: 768px) {
+            header {
+                width: 100%; /* Mengubah lebar header menjadi 100% pada perangkat kecil */
+                height: auto; /* Mengubah tinggi menjadi otomatis */
+            }
+
+            main {
+                margin-left: 0; /* Menghapus margin kiri pada perangkat kecil */
+                padding: 10px; /* Mengurangi padding utama pada perangkat kecil */
+            }
+
+            .task {
+                margin-bottom: 10px; /* Mengurangi margin bawah untuk tugas */
+            }
+
+            /* Ukuran tombol hapus */
+            .delete-button {
+                padding: 3px 5px; /* Mengurangi padding tombol hapus */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>E-TODOLIST</h1>
+        <nav>
+            <a href="dashboard.html">BERANDA</a>
+            <a href="list.html">DAFTAR TUGAS</a>
+        </nav>
+    </header>
+    <main>
+        <input type="text" id="searchInput" placeholder="Cari Tugas..." onkeyup="searchTasks()">
+        <h2>LIST DAFTAR TUGAS</h2>
+        <div id="taskList"></div>
+        <div class="modal" id="imageModal">
+            <span class="close" id="modalClose">&times;</span>
+            <div class="modal-content">
+                <img id="modalImage" src="" alt="Gambar Tugas">
+            </div>
+        </div>
+    </main>
+    <script>
+        // Load tasks from localStorage
+        document.addEventListener("DOMContentLoaded", function() {
+            displayTasks();
+        });
+
+        function displayTasks() {
+            const taskList = document.getElementById('taskList');
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+            // Clear existing tasks
+            taskList.innerHTML = '';
+
+            if (tasks.length === 0) {
+                taskList.innerHTML = '<p>Tidak ada tugas.</p>';
+                return;
+            }
+
+            // Loop untuk menampilkan setiap tugas
+            tasks.forEach((task, index) => {
+                const taskDiv = document.createElement('div');
+                taskDiv.classList.add('task');
+
+                taskDiv.innerHTML = `
+                    <button class="delete-button" onclick="confirmDeleteTask(${index})">🗑 Hapus</button>
+                    <h3>${task.name}</h3>
+                    <p><strong>Deskripsi:</strong> ${task.description}</p>
+                    <div class="date">
+                        <p><strong>✔ Tanggal Diberikan:</strong> ${formatDate(task.givenDate)}</p>
+                        <p><strong>✔ Tanggal Pengumpulan:</strong> ${formatDate(task.dueDate)}</p>
+                    </div>
+                    ${task.image ? `<img src="${task.image}" alt="Gambar Tugas" class="task-image">` : ''}
+                `;
+
+                taskList.appendChild(taskDiv);
+            });
+
+            // Set up modal functionality for images
+            setupImageModal();
+        }
+
+        function setupImageModal() {
+            const taskImages = document.querySelectorAll('.task-image');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+
+            taskImages.forEach(image => {
+                image.addEventListener('click', function() {
+                    modalImage.src = this.src;
+                    modal.style.display = 'block';
+                });
+            });
+
+            modalClose.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        function confirmDeleteTask(index) {
+            if (confirm("Apakah Anda yakin ingin menghapus tugas ini?")) {
+                deleteTask(index);
+            }
+        }
+
+        function deleteTask(index) {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.splice(index, 1); // Menghapus tugas berdasarkan index
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            displayTasks(); // Menampilkan kembali daftar tugas
+        }
+
+        function searchTasks() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const tasks = document.querySelectorAll('.task');
+
+            tasks.forEach(task => {
+                const taskName = task.querySelector('h3').innerText.toLowerCase();
+                const taskDescription = task.querySelector('p').innerText.toLowerCase();
+
+                if (taskName.includes(input) || taskDescription.includes(input)) {
+                    task.style.display = 'block'; // Tampilkan jika cocok
+                } else {
+                    task.style.display = 'none'; // Sembunyikan jika tidak cocok
+                }
+            });
+        }
+
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+    </script>
+</body>
+</html>
